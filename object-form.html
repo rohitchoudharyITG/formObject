@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Object Form</title>
+		<link rel="icon" type="image/x-icon" href="C:\Users\Rohit\Downloads\pro1.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<section class="section">
+			<div class="object-form">
+				<form  id ="objectForm" action="#" method="GET">
+				<div>
+					<label for="name">Name</label>
+					<input type="text" id="name" name="name" value="" placeholder="Name">
+				</div>
+				<br><br>
+				<div>
+					<label for="lastName">Last Name</label>
+					<input type="text" id="lastName" name="lastName" value="" placeholder="lastName">
+				</div>
+				<br><br>
+				<div>
+					<button type="submit">Submit</button>
+				</div>
+				</form>
+			</div>
+		</section>
+		<script>
+			 const form = document.getElementById('objectForm');
+
+					form.addEventListener('submit', function(event) {
+						event.preventDefault(); 
+						const 	 = {};
+						const formElements = form.elements;
+						for (let element of formElements) {
+							if (element.name) {
+								formValues[element.name] = element.value;
+							}
+						}
+						console.log(formValues);
+					});
+			
+		</script>
+	</body>
+</html>
