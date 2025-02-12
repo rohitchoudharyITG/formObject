@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Object Form</title>
+		<link rel="icon" type="image/x-icon" href="C:\Users\Rohit\Downloads\pro1.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<section class="section">
+			<div class="object-form">
+				<p id="fullname"></p>
+                <p>Displaying a JavaScript object will output [object Object]:</p>  
+                <h4>Displaying Properties in a Loop</h4>
+                <p id="object-propery"></p>
+                <h4>Displaying Properties in using array</h4>
+                <p id="object-propery-array"></p>
+                <h4>The Object.entries() Method</h4>
+                <p id="assignText"></p>
+                <h4>The Object.groupBy() Method</h4>
+                <p id="result"></p>
+			</div>
+		</section>
+		<script>
+			//JavaScript Object Properties
+            const person = {        
+            firstname: "John",
+            lastname: "Doe",
+            age: 50,
+            eyecolor: "blue",
+            fullName: function() {
+                    return this.firstname + " " + this.lastname;
+                }
+            };
+            console.log('age',person.age);
+            //add new entry
+            person['city']= 'dewas'
+            console.log('city',person.city)
+            //delete entry(property)
+            //delete person["lastname"];
+            console.log('lastname',person.lastname)//undefined
+            //JavaScript Object Methods
+            document.getElementById("fullname").innerHTML = person.fullName();
+            //Displaying Properties in a Loop
+            const person2 = {
+            name: "John",
+            age: 30,
+            city: "New York"
+            };
+            let text = "";
+            for (let x in person2) {
+            text += person2[x] + " ";
+            };
+            const myArray = Object.values(person2);
+            document.getElementById("object-propery").innerHTML = text;
+            document.getElementById("object-propery-array").innerHTML = myArray;
+
+            //Object Constructor Functions
+            function car(name, model, weight, color) {
+                this.carName = name;
+                this.carModel = model;
+                this.carWeight = weight;
+                this.carColor = color;
+                }
+
+                // Create a Person object
+                const myCar = new car("Fiat", 500   , 500, "black");
+                console.log(myCar.carColor)
+                //JavaScript Object.assign()
+                const text1 = {
+                    firstName: "John",
+                    lastName: "Doe",
+                    age: 50,
+                    eyeColor: "blue"
+                    };
+
+                    // Create Source Object
+                    const text2 = {firstName: "Anne",lastName: "Smith"};
+
+                    // Assign Source to Target
+                    Object.assign(text1, text2);
+
+                    // Display Target
+                    let assignText = Object.entries(text1); 
+                    console.log(assignText)
+                    document.getElementById("assignText").innerHTML = assignText;
+                    //JavaScript Object.groupBy()
+                    const students = [
+                        {name:"arun", parsent:45},
+                        {name:"aakash", parsent:84},
+                        {name:"ravi", parsent:54},
+                        {name:"yash", parsent:72}
+                        ];
+                        function myCallback({ parsent }) {
+                        return parsent > 60 ? "Pass" : "Fail";
+                        }
+                        const result = Object.groupBy(students, myCallback);
+                        let resultPrint ="These result are pass: <br>";
+                        for (let [x,y] of result.Pass.entries()) {
+                            resultPrint += y.name + " " + y.parsent + "<br>";
+                        }
+
+                        resultPrint += "<br>These result are fail: <br>";
+                        for (let [x,y] of result.Fail.entries()) {
+                            resultPrint += y.name + " " + y.parsent + "<br>";
+                        }
+
+                        document.getElementById("result").innerHTML = resultPrint;
+		</script>
+	</body>     
+</html>

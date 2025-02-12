@@ -29,15 +29,14 @@
 			</div>
 		</section>
 		<script>
-			 const btn = document.querySelector('#submit');
-				const form = document.querySelector('#objectForm');
-				btn.addEventListener('click', (e) => {
-					e.preventDefault();
-					const formData = new FormData(form);
-					const values = Object.fromEntries([...formData.entries()]);
-					console.log(values);
-				});
-			
+			const btn = document.querySelector('#submit');
+			const form = document.querySelector('#objectForm');
+			btn.addEventListener('click', (e) => {
+				e.preventDefault();
+				const formData = new FormData(form);
+				const values = Object.fromEntries([...formData.entries()]);
+				console.log(values);
+			});
 		</script>
 	</body>
 </html>
