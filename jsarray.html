@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Object Form</title>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<section class="section">
+			<h4>JavaScript Arrays</h4>
+            Example- let fruits = [apple, banana, cherry] //Literal Syntax
+            let fruits = new Array("Apple", "Banana", "Cherry"); // Constructor Syntax
+
+		</section>
+		<script>
+			let table = [2,4,6,8,10,12,14,16,18,20]
+            let tableLength = table.length;
+            console.log('array',table);
+            console.log('array.toString()',table.toString());
+            console.log('array.length', tableLength);
+            console.log('array.at(5)', table.at(5));
+            console.log('array.join()', table.join('/'));
+            table.pop()
+            console.log('array.pop()', table);
+            table.push(20)
+            console.log('array.push()', table);
+            table.shift()
+            console.log('array.shift()', table);
+            table.unshift(2)
+            console.log('array.unshift(2)', table);
+            delete table[5];
+            console.log('delete table[5]', table);
+            let moreTable = [22,24,26,28,30];
+            let fullTable = table.concat(moreTable)
+            console.log('concat', fullTable);
+            table[5]= 12;
+            let flatTable = table.flatMap(x => [x, x+1]);
+            console.log('flatMap', flatTable);
+            table.splice(2, 0, 22, 24);
+            console.log('array.splice()', table);
+		</script>
+	</body>     
+</html>

@@ -108,6 +108,16 @@
                         }
 
                         document.getElementById("result").innerHTML = resultPrint;
+                        //JavaScript Getters and Setters
+                        const personget = {
+                        firstName: "John",
+                        lastName: "Doe",
+                        language: "en",
+                        get lang() {
+                            return this.language;
+                        }
+                        };
+                        console.log(personget.lang)
 		</script>
 	</body>     
 </html>
