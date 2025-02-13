@@ -13,6 +13,12 @@
 			<h4>JavaScript Arrays</h4>
             Example- let fruits = [apple, banana, cherry] //Literal Syntax
             let fruits = new Array("Apple", "Banana", "Cherry"); // Constructor Syntax
+            <div class="array-number">
+				<p>3 highest number is <span class="thirdhigh"></span>.</p>
+				
+				<p>3 lowest number is <span class="thirdlow"></span>.</p>
+				<p class="count"></p>
+			</div>
 
 		</section>
 		<script>
@@ -41,6 +47,37 @@
             console.log('flatMap', flatTable);
             table.splice(2, 0, 22, 24);
             console.log('array.splice()', table);
+
+            //task
+            let arr = [4,4,4,2,2,2,8,4,4,7,7,7,582,753,951,654,0.2,0.5,.5,.6,.2, 0,1,2,4,7,88,99,77,44,55,88,77,99,00,22,.55,66,77,951,753,850];
+
+				let count = {};
+
+				arr.forEach(item => {
+				  count[item] = (count[item] || 0) + 1;
+				});
+
+				let result = '';
+				for (let element in count) {
+					result += `${element} [${count[element]} times]<br>`; 
+				}
+				document.querySelector(".count").innerHTML = result;
+					
+					
+				let desendingArr= arr.sort((a, b) => b - a);
+				
+				let uniquArr = [];
+						desendingArr.forEach(item => {
+						  if (!uniquArr.includes(item)) {
+							uniquArr.push(item);
+						  }
+						});
+					
+				const large3 = uniquArr.slice(0,3);
+				document.querySelector(".thirdhigh").innerHTML = large3;
+				
+				const low3 =  uniquArr.slice(uniquArr.length-3);
+				document.querySelector(".thirdlow").innerHTML = low3;
 		</script>
 	</body>     
 </html>
