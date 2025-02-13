@@ -1,83 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Object Form</title>
-		
+		<title>02/01</title>
+		<link rel="icon" type="image/x-icon" href="C:\Users\Rohit\Downloads\pro2.png">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
-			
+
 		</style>
 	</head>
 	<body>
 		<section class="section">
-			<h4>JavaScript Arrays</h4>
-            Example- let fruits = [apple, banana, cherry] //Literal Syntax
-            let fruits = new Array("Apple", "Banana", "Cherry"); // Constructor Syntax
-            <div class="array-number">
+			<div class="array-number">
 				<p>3 highest number is <span class="thirdhigh"></span>.</p>
 				
-				<p>3 lowest number is <span class="thirdlow"></span>.</p>
+				<p>3 lowest number is <span class="thirdlow"></span></p>
 				<p class="count"></p>
 			</div>
-
 		</section>
 		<script>
-			let table = [2,4,6,8,10,12,14,16,18,20]
-            let tableLength = table.length;
-            console.log('array',table);
-            console.log('array.toString()',table.toString());
-            console.log('array.length', tableLength);
-            console.log('array.at(5)', table.at(5));
-            console.log('array.join()', table.join('/'));
-            table.pop()
-            console.log('array.pop()', table);
-            table.push(20)
-            console.log('array.push()', table);
-            table.shift()
-            console.log('array.shift()', table);
-            table.unshift(2)
-            console.log('array.unshift(2)', table);
-            delete table[5];
-            console.log('delete table[5]', table);
-            let moreTable = [22,24,26,28,30];
-            let fullTable = table.concat(moreTable)
-            console.log('concat', fullTable);
-            table[5]= 12;
-            let flatTable = table.flatMap(x => [x, x+1]);
-            console.log('flatMap', flatTable);
-            table.splice(2, 0, 22, 24);
-            console.log('array.splice()', table);
-
-            //task
-            let arr = [4,4,4,2,2,2,8,4,4,7,7,7,582,753,951,654,0.2,0.5,.5,.6,.2, 0,1,2,4,7,88,99,77,44,55,88,77,99,00,22,.55,66,77,951,753,850];
-
+				let arr = [4,4,4,2,2,2,8,4,4,7,7,7,582,753,951,654,0.2,0.5,.5,.6,.2, 0,1,2,4,7,88,99,77,44,55,88,77,99,0,22,.55,66,77,951,753,850];
+				//console.log(arr.length);
+				//let uniqArry = [...new Set(arr)];
+				//index count
 				let count = {};
-
 				arr.forEach(item => {
 				  count[item] = (count[item] || 0) + 1;
 				});
-
 				let result = '';
 				for (let element in count) {
 					result += `${element} [${count[element]} times]<br>`; 
 				}
 				document.querySelector(".count").innerHTML = result;
 					
-					
 				let desendingArr= arr.sort((a, b) => b - a);
+				//Highest 3 number
+				let large3 = '';
+				let largeCount = 0;  
+				for (let i = 0; i < desendingArr.length && largeCount < 3; i++) {
+				  if (i === 0 || desendingArr[i] !== desendingArr[i - 1]) {
+					large3 += desendingArr[i] + ',' ;  
+					largeCount++;  
+				  }
+				}
+				//const large3 = desendingArr.slice(0,3);
+				document.querySelector(".thirdhigh").innerHTML = large3
 				
-				let uniquArr = [];
-						desendingArr.forEach(item => {
-						  if (!uniquArr.includes(item)) {
-							uniquArr.push(item);
-						  }
-						});
-					
-				const large3 = uniquArr.slice(0,3);
-				document.querySelector(".thirdhigh").innerHTML = large3;
-				
-				const low3 =  uniquArr.slice(uniquArr.length-3);
+				//Lowest 3 number
+				let low3 = '';
+				let lowCount = 0; 
+				for (let i = desendingArr.length - 1; i >= 0 && lowCount < 3; i--) {
+				  if (i === desendingArr.length - 1 || desendingArr[i] !== desendingArr[i + 1]) {
+					low3 += desendingArr[i] + ',';
+					lowCount++;
+				  }
+				}
+				//const low3 =  desendingArr.slice(desendingArr.length-3);
 				document.querySelector(".thirdlow").innerHTML = low3;
+				
 		</script>
-	</body>     
+	</body>
 </html>
