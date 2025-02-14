@@ -9,12 +9,70 @@
   </style>
 </head>
 <body>
+    <h2>Bank Account Form</h2>
 
+    <div class="account-info-section">
+      <form id="bankForm">
+          <label for="owner">Account Owner:</label>
+          <input type="text" id="owner" placeholder="Enter Owner Name" required><br><br>
+  
+          <label for="deposit">Deposit Amount:</label>
+          <input type="number" id="deposit" placeholder="Deposit Amount" required><br><br>
+  
+          <label for="withdraw">Withdraw Amount:</label>
+          <input type="number" id="withdraw" placeholder="Withdraw Amount"><br><br>
+  
+          <button type="submit">Submit</button>
+      </form>
+      <div id="output"></div>
+      <div class="bikeinfo"></div>
+      <div class="el-bikeinfo"></div>
+    </div>
     <div class="bikeinfo"></div>
     <div class="el-bikeinfo"></div>
   
   <script>
-   
+   class BankAccount {
+      constructor(owner, balance = 0) {
+        this.owner = owner;
+        this.balance = balance;
+      }
+
+      deposit(amount) {
+        if (amount > 0) {
+          this.balance += amount;
+        }
+      }
+
+      withdraw(amount) {
+        if (amount > 0 && this.balance >= amount) {
+          this.balance -= amount;
+        }
+      }
+
+      displayInfo() {
+        return `<strong>Account Owner:</strong> ${this.owner}<br><strong>Current Balance:</strong> ${this.balance}`;
+      }
+    }
+
+    // When form is submitted
+    document.getElementById("bankForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const owner = document.getElementById("owner").value;
+      const depositAmount = parseFloat(document.getElementById("deposit").value);
+      const withdrawAmount = parseFloat(document.getElementById("withdraw").value);
+
+      // Create a new BankAccount object
+      const account = new BankAccount(owner);
+
+      // Perform deposit and withdrawal
+      account.deposit(depositAmount);
+      account.withdraw(withdrawAmount);
+
+      // Display information in the output div
+      document.getElementById("output").innerHTML = account.displayInfo();
+    });
    class Bike{
      constructor(name,color,modal){
         this.name = name;
