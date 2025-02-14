@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Classes</title>
+  <style>
+  
+  </style>
+</head>
+<body>
+
+    <div class="bikeinfo"></div>
+    <div class="el-bikeinfo"></div>
+  
+  <script>
+   
+   class Bike{
+     constructor(name,color,modal){
+        this.name = name;
+        this.color = color;
+        this.modal = modal;
+     }
+     oldYear(n){
+        return n - this.modal;
+     }
+    
+   }
+   const date = new Date();
+   let year = date.getFullYear();
+
+  const myBike = new Bike("platina", "black" , 2012)
+  // console.log('bikeinfo', myBike.name + ',' + myBike.color +  ',' + myBike.oldYear(year));
+   document.querySelector('.bikeinfo').innerHTML = 'my bike name-'+ myBike.name + ' , ' +  'color-'+ myBike.color + ' , ' + myBike.oldYear(year) +'years old.'
+  
+  //Class Inheritance
+   class ElectricBike extends Bike {
+  constructor(name,color,modal, batteryCapacity) {
+    super(name,color,modal);
+    this.batteryCapacity = batteryCapacity;
+  }
+
+}
+let myElectricbike = new ElectricBike("TVS", "Blue", 2023, 100);
+document.querySelector('.el-bikeinfo').innerHTML = 'my bike name-'+ myElectricbike.name + ' , ' +  'color-'+ myElectricbike.color + ' , ' + myElectricbike.oldYear(year) +'years old.' + ' , ' + 'Battery capacity ' + myElectricbike.batteryCapacity+ 'KM'
+  </script>
+
+</body>
+</html> 
