@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>javascript classes</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+
+		</style>
+	</head>
+	<body>
+		<section class="section">
+			<div class="js-classes">
+			
+			</div>
+		</section>
+		<script>
+			class Book {
+			  constructor(title, author, year) {
+				this.title = title;
+				this.author = author;
+				this.year = year;
+			  }
+              getBookInfo(){
+                return `${this.title} by ${this.author}, published year in ${this.year}` 
+              }
+			}
+            class Library{
+                constructor() {
+                this.books = [];
+                }
+                //addBook method
+                addBook(book) {
+                this.books.push(book);
+                console.log(`Book "${book.title}" added to the library.`);
+                }
+
+                 // Method to list all available books
+                listBooks() {
+                if (this.books.length === 0) {
+                    console.log("No books available in the library.");
+                } else {
+                    this.books.forEach(book => {
+                    console.log(book.getBookInfo());
+                    });
+                }
+                }   
+                //remove method
+                removeBook(title) {
+                const index = this.books.findIndex(book => book.title === title);
+                if (index !== -1) {
+                    const removedBook = this.books.splice(index, 1);
+                    console.log(`Book "${removedBook[0].title}" removed from the library.`);
+                } else {
+                    console.log(`Book with title "${title}" not found.`);
+                }
+                }
+                //find method
+                 // Method to find a book by title
+                findBook(title) {
+                const book = this.books.find(book => book.title === title);
+                if (book) {
+                    console.log(`Found: ${book.getBookInfo()}`);
+                } else {
+                    console.log(`Book with title "${title}" not found.`);
+                }
+                }
+                
+            }
+            const book1 = new Book('First Lie Wins', 'Ashley Elston', '2022 ');
+            const book2 = new Book('The Women', 'Kristin Hannah', '2023');
+            const book3 = new Book('Funny Story', 'Emily Henry', '2024');
+
+            const myLibrary = new Library();
+
+            myLibrary.addBook(book1);
+            myLibrary.addBook(book2);
+            myLibrary.addBook(book3);
+
+            myLibrary.listBooks();
+
+            //  myLibrary.removeBook('Funny Story');
+            myLibrary.findBook('Funny Story');
+		</script>
+	</body>
+</html>
+
