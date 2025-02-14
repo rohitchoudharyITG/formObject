@@ -24,13 +24,27 @@
      oldYear(n){
         return n - this.modal;
      }
-    
+     //getter and setter
+    get getbikeName(){
+        return this.name;
+    }
+    set setbikeName(x) {
+        this.name = x;
+    }
+    //static method
+    static color(x) {
+        return "color " + x.color;
+    }
    }
+   
    const date = new Date();
    let year = date.getFullYear();
 
-  const myBike = new Bike("platina", "black" , 2012)
-  // console.log('bikeinfo', myBike.name + ',' + myBike.color +  ',' + myBike.oldYear(year));
+  const myBike = new Bike("platina", "black" , 2012);
+   myBike.setbikeName = 'pulsar';
+
+  console.log('getter', myBike.getbikeName)
+  console.log('static-method', Bike.color(myBike))
    document.querySelector('.bikeinfo').innerHTML = 'my bike name-'+ myBike.name + ' , ' +  'color-'+ myBike.color + ' , ' + myBike.oldYear(year) +'years old.'
   
   //Class Inheritance
