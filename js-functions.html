@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>javascript classes</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+
+		</style>
+	</head>
+	<body>
+		<section class="section">
+			<div class="js-functions">
+                <div id="self-invoking"></div>
+			</div>
+		</section>
+		<script>
+            function myFirstFunctions(x,y){
+                return x+y;
+            }
+            let result = myFirstFunctions(4,6);
+            console.log(result);
+
+            //Self-Invoking Functions
+            (function(){
+                document.getElementById("self-invoking").innerHTML = "Hello! I called myself";       
+            })()
+
+            //Arrow Functions
+
+            const arrowFun = (x,y)=>x/y;
+            console.log('Arrow function', arrowFun(12,3))
+
+            //Function Parameters and Arguments
+            //Default Parameters
+            function defaultVal(x,y){
+                if(y === undefined) y=4;
+                return x * y;   
+            }
+            console.log('default parameter value', defaultVal(5));
+
+            //Default Parameter Values
+            function defaultValSet(x,y=4){
+                return x+y;
+            }
+            console.log('default parameter value', defaultValSet(5));
+
+            //Function Rest Parameter
+            function sumVal(...args){
+                let sum = 0;
+                for (let arg of args) sum += arg;
+                return sum;      
+            }
+            let restVal  = sumVal(4, 9, 16, 25, 36, 49, 64, 81, 100);
+            console.log('Rest paramerter', restVal);
+
+            //The Arguments Object
+            function sumAll() {
+                let sum = 0;
+                for(let i = 0; i < arguments.length; i++) {
+                    sum += arguments[i];
+                }
+                return sum;
+                }
+                let sumNum = sumAll(1, 123, 500, 115, 44, 88)
+                console.log('Arguments Object   ', sumNum)
+                console.log(window.myFirstFunctions(7,4));
+
+                //Invoking a Function as a Method
+                const myCar ={
+                    name : 'Safari',
+                    brand: 'Tata',
+                    detials:function(){
+                          return this.name + ' ' + this.brand  
+                    }
+                }
+                console.log('Invoking a Function as a Method', myCar.detials());
+
+                //The JavaScript call() Method
+                const car  = {
+                    fullInfo: function() {
+                        return this.carName + " " + this.carModel;
+                    }
+                }
+                const car1 = {
+                      carName:'Punch',
+                      carModel:'2022'      
+                }
+                console.log('call method', car.fullInfo.call(car1))
+                //The call() Method with Arguments
+                //console.log(car.fullInfo.call(car1, Brand))
+		</script>
+	</body>
+</html>
+
